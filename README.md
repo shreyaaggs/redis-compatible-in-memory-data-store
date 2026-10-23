@@ -1,2 +1,2 @@
-# Fenrir
-A Redis-compatible in-memory data store written from scratch in Go.
+# Redis-go
+A Redis-compatible in-memory data store, written from scratch in Go. The goal is to understand what sits underneath the infrastructure most backend code takes for granted, so nothing here leans on an existing Redis library. So far the server accepts TCP connections on a configurable port and handles each client in its own goroutine, reading and writing through buffered I/O. Next is a full RESP protocol implementation, which will let unmodified Redis clients like redis-cli connect and issue commands against it. From there: the core data structures, including a skiplist for sorted sets, append only file persistence with configurable fsync behavior, LRU eviction under a memory cap, and leader follower replication.
